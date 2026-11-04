@@ -97,6 +97,7 @@ productos.push(new Producto("Olla", 36000, 3, "Hudson"))
 productos.push(new Producto("Palitos", 3400, 24, "Bachilitos"))
 
 
+let x
 do{
     console.clear()
     console.log("1- Ver datos de un producto")
@@ -107,8 +108,8 @@ do{
     console.log("6- Agregar producto")
     console.log("0- Terminar programa")
 
-    let x = prompt()
-    while (Number(x) > 5 || Number(x) < 0 || Number(x) %1 != 0) {
+    x = prompt()
+    while (Number(x) > 6 && Number(x) > 0 && Number(x) %1 != 0) {
         x = prompt("Ingresar valor valido")
     }
 
@@ -127,11 +128,15 @@ do{
     if (x === "5"){
         ElegirProducto(productos).vender()
     }
-    if (x != "0"){
+    if (x === "6"){
+        const producto_agregado = AgregarProducto()
+        productos.push(new Producto(producto_agregado[0], producto_agregado[1], producto_agregado[2], producto_agregado[3]))
+    }
+    if (x !== "0"){
         prompt()
     }
     
-} while (x != "0")
+} while (x !== "0")
 
 
 console.log("Gracias por usar el programa")
